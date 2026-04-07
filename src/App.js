@@ -7,7 +7,8 @@ import Download from './pages/Download';
 
 function App() {
   return (
-    <Router>
+    /* basename ensures the links work on GitHub Pages (e.g., username.github.io/Web-dev-Project) */
+    <Router basename="/Web-dev-Project">
       <div className="App">
         
         <nav className="nav-bar">
@@ -18,14 +19,12 @@ function App() {
         </nav>
 
         <header className="App-header">
-          
           <Routes>
             <Route path="/" element={<Home />} />
-            {/* CHANGE THIS: path should be "/agents" to match your nav link */}
             <Route path="/agents" element={<Agents />} /> 
             <Route path="/maps" element={<Maps />} />
             <Route path="/download" element={<Download />} />
-            </Routes>
+          </Routes>
         </header>
       </div>
     </Router>
@@ -33,5 +32,3 @@ function App() {
 }
 
 export default App;
-
-
