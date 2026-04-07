@@ -1,24 +1,78 @@
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import './App.css';
 import Home from './pages/Home';
 import Agents from './pages/Agents'; 
 import Maps from './pages/Maps';
 import Download from './pages/Download';
 
 function App() {
+  
+  const [hoveredLink, setHoveredLink] = useState(null);
+
+  const styles = {
+    app: {
+      textAlign: 'center',
+      backgroundColor: '#0f1923',
+      minHeight: '100vh',
+      color: '#ece8e1',
+    },
+    navBar: {
+      backgroundColor: '#0f1923',
+      padding: '1.5rem',
+      display: 'flex',
+      justifyContent: 'center',
+      gap: '40px',
+      position: 'fixed',
+      width: '100%',
+      top: 0,
+      zIndex: 10,
+      borderBottom: '1px solid rgba(236, 232, 225, 0.1)',
+      textTransform: 'uppercase',
+      fontWeight: 'bold',
+      letterSpacing: '2px',
+    },
+    appHeader: {
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    
+    getNavLinkStyle: (linkName) => ({
+      color: hoveredLink === linkName ? '#ff4655' : '#ece8e1',
+      textDecoration: 'none',
+      padding: '5px 10px',
+      
+      outline: hoveredLink === linkName ? '2px solid #ff4655' : 'none',
+      transition: 'color 0.1s ease', // Subtle color fade, but instant outline
+    })
+  };
+
+  const navLinks = [
+    { name: 'Home', path: '/' },
+    { name: 'Agents', path: '/agents' },
+    { name: 'Maps', path: '/maps' },
+    { name: 'Download', path: '/download' },
+  ];
+
   return (
-    /* basename ensures the links work on GitHub Pages (e.g., username.github.io/Web-dev-Project) */
     <Router basename="/Web-dev-Project">
-      <div className="App">
+      <div style={styles.app}>
         
-        <nav className="nav-bar">
-          <Link to="/">Home</Link>
-          <Link to="/agents">Agents</Link>
-          <Link to="/maps">Maps</Link>
-          <Link to="/download">Download</Link>
+        <nav style={styles.navBar}>
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              to={link.path}
+              style={styles.getNavLinkStyle(link.name)}
+              onMouseEnter={() => setHoveredLink(link.name)}
+              onMouseLeave={() => setHoveredLink(null)}
+            >
+              {link.name}
+            </Link>
+          ))}
         </nav>
 
-        <header className="App-header">
+        <header style={styles.appHeader}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/agents" element={<Agents />} /> 

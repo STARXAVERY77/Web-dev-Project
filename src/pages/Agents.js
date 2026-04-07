@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import './Agents.css';
 
-// Importing all as PNG as requested
+// Importing assets
 import jettImg from './jett.png'; 
 import sageImg from './sage.png';
 import sovaImg from './sova.png';
@@ -35,34 +34,116 @@ const agentData = {
 };
 
 function Agents() {
-  // Using State to handle the dataflow
   const [activeCategory, setActiveCategory] = useState('Duelist');
   const currentAgent = agentData[activeCategory];
 
+  // --- JS Style Objects ---
+  const styles = {
+    agentsPage: {
+      paddingTop: '100px',
+      minHeight: '100vh',
+      backgroundColor: '#0f1923',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+    displayContainer: {
+      flex: 1,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: '100%',
+    },
+    agentCard: {
+      display: 'flex',
+      backgroundColor: 'rgba(236, 232, 225, 0.05)',
+      border: '1px solid rgba(236, 232, 225, 0.2)',
+      width: '90%',
+      maxWidth: '1000px',
+      height: '500px',
+    },
+    imageSection: {
+      flex: 1,
+      background: 'linear-gradient(180deg, #1e2a35 0%, #0f1923 100%)',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    agentImg: {
+      maxWidth: '100%',
+      maxHeight: '100%',
+      objectFit: 'contain',
+    },
+    infoSection: {
+      flex: 1,
+      padding: '40px',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      textAlign: 'left',
+      color: '#ece8e1' // Added to ensure text is visible
+    },
+    categoryLabel: {
+      color: '#ff4655',
+      fontWeight: 'bold',
+      letterSpacing: '2px',
+      textTransform: 'uppercase',
+    },
+    selectorFooter: {
+      padding: '40px 0',
+      background: 'rgba(0, 0, 0, 0.4)',
+      width: '100%',
+      textAlign: 'center',
+      marginTop: 'auto',
+    },
+    selectorTitle: {
+      color: '#ece8e1',
+      letterSpacing: '5px',
+      fontSize: '0.8rem',
+      marginBottom: '20px',
+      textTransform: 'uppercase',
+    },
+    categoryButtons: {
+      display: 'flex',
+      justifyContent: 'center',
+      gap: '15px',
+    },
+    // Dynamic function for the buttons to handle the 'active' state
+    getBtnStyle: (isActive) => ({
+      background: isActive ? '#ff4655' : 'transparent',
+      color: '#ece8e1',
+      border: isActive ? '1px solid #ff4655' : '1px solid rgba(236, 232, 225, 0.5)',
+      padding: '12px 25px',
+      cursor: 'pointer',
+      fontWeight: 'bold',
+      textTransform: 'uppercase',
+      transition: '0.3s all ease',
+    })
+  };
+
   return (
-    <div className="agents-page">
-      <div className="agent-display-container">
-        <div className="agent-card">
-          <div className="agent-image-section">
-            <img src={currentAgent.image} alt={currentAgent.name} className="agent-img" />
+    <div style={styles.agentsPage}>
+      <div style={styles.displayContainer}>
+        <div style={styles.agentCard}>
+          <div style={styles.imageSection}>
+            <img src={currentAgent.image} alt={currentAgent.name} style={styles.agentImg} />
           </div>
-          <div className="agent-info-section">
-            <span className="category-label">{activeCategory}</span>
-            <h2 className="agent-name">{currentAgent.name}</h2>
-            <h3 className="ability-name">SIGNATURE: {currentAgent.power}</h3>
-            <p className="agent-desc">{currentAgent.description}</p>
+          <div style={styles.infoSection}>
+            <span style={styles.categoryLabel}>{activeCategory}</span>
+            <h2 style={{ fontSize: '3rem', margin: '10px 0' }}>{currentAgent.name}</h2>
+            <h3 style={{ color: '#ff4655', marginBottom: '15px' }}>SIGNATURE: {currentAgent.power}</h3>
+            <p style={{ lineHeight: '1.6', opacity: 0.8 }}>{currentAgent.description}</p>
           </div>
         </div>
       </div>
 
-      {/* Category Selection at the Bottom */}
-      <div className="selector-footer">
-        <p className="selector-title">CHOOSE YOUR AGENT TYPE</p>
-        <div className="category-buttons">
+      <div style={styles.selectorFooter}>
+        <p style={styles.selectorTitle}>CHOOSE YOUR AGENT TYPE</p>
+        <div style={styles.categoryButtons}>
           {Object.keys(agentData).map((cat) => (
             <button 
               key={cat} 
-              className={`cat-btn ${activeCategory === cat ? 'active' : ''}`}
+              style={styles.getBtnStyle(activeCategory === cat)}
               onClick={() => setActiveCategory(cat)}
             >
               {cat}
