@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-// Importing assets
+
 import jettImg from './jett.png'; 
 import sageImg from './sage.png';
 import sovaImg from './sova.png';
@@ -37,7 +37,7 @@ function Agents() {
   const [activeCategory, setActiveCategory] = useState('Duelist');
   const currentAgent = agentData[activeCategory];
 
-  // --- JS Style Objects ---
+
   const styles = {
     agentsPage: {
       paddingTop: '100px',
@@ -81,7 +81,7 @@ function Agents() {
       flexDirection: 'column',
       justifyContent: 'center',
       textAlign: 'left',
-      color: '#ece8e1' // Added to ensure text is visible
+      color: '#ece8e1' 
     },
     categoryLabel: {
       color: '#ff4655',
@@ -108,7 +108,7 @@ function Agents() {
       justifyContent: 'center',
       gap: '15px',
     },
-    // Dynamic function for the buttons to handle the 'active' state
+    
     getBtnStyle: (isActive) => ({
       background: isActive ? '#ff4655' : 'transparent',
       color: '#ece8e1',
