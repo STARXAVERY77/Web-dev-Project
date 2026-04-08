@@ -1,3 +1,11 @@
+//functional component that accepts props to display individual map details
+//usestate hook to handle hover
+//state toggle card outline
+//prop validation
+
+
+
+
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 

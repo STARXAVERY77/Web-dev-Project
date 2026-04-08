@@ -1,3 +1,9 @@
+//class component: homeClass, constructor
+//hook useNavigate
+//state hover effect and tagline
+
+
+
 import React, { Component } from 'react';
 import { useNavigate } from 'react-router-dom';
 import background from '../Homepage.png'; 

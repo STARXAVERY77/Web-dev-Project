@@ -1,3 +1,6 @@
+// hooks useeffects
+//props mapData passed to the mapCard
+
 import React, { useEffect } from 'react';
 import MapCard from './MapCard';
 
