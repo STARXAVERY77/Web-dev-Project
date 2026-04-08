@@ -76,7 +76,7 @@ function MapCard({ name, image, desc, type }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Visual Prop Validation Tag */}
+      
       <div style={styles.tagStyle}>
         {isValidType ? type : "Invalid Map Type"}
       </div>

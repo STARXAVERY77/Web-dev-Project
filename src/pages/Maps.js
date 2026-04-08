@@ -11,7 +11,7 @@ const mapData = [
   { name: "ICEBOX", image: iceboxImg, type: "Vertical", desc: "A secret Kingdom excavation site overtaken by the arctic. The two plant sites require horizontal finesse—take advantage of the ziplines." },
   { name: "LOTUS", image: lotusImg, type: "3-Site", desc: "A mysterious structure housing an astral conduit. Great stone doors provide movement opportunities and unlock paths to three mysterious sites." },
   { name: "SUNSET", image: sunsetImg, type: "Traditional", desc: "A disaster at a local kingdom facility. Stop at your favorite food truck then fight across the city in this traditional three-lane map." },
-  { name: "UNKNOWN", image: sunsetImg, type: "Space", desc: "Testing invalid prop validation logic." } // Test case
+  { name: "UNKNOWN", image: sunsetImg, type: "Space", desc: "Testing invalid prop validation logic." }
 ];
 
 function Maps() {
